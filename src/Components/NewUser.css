@@ -1,7 +1,30 @@
-.user-form {
+.new-user {
   display: flex;
+  flex-direction: column;
+  margin: 1em auto;
+  width: 33%;
+  gap: 0.7em;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin: 2em;
-  padding: 0.5em;
+  background-color: #39ccc812;
+  padding: 2em;
+  border-radius: 2em;
+}
+
+.new-expense__control label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.new-expense__control input {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.new-expense__actions {
+  text-align: right;
 }
