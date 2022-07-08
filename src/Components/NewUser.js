@@ -12,6 +12,7 @@ const NewUser = (props) => {
     email: "",
     dob: "",
     gender: "",
+    phoneNumber: "",
   });
 
   const handleFirstNameChange = (event) => {
@@ -38,6 +39,12 @@ const NewUser = (props) => {
       return { ...userDetails, dob: event.target.value };
     });
   };
+  const handlePhoneNumberChange = (event) => {
+    setUserDetails(() => {
+      return { ...userDetails, phoneNumber: event.target.value };
+    });
+  };
+
   const handleGenderChange = (event) => {
     setUserDetails(() => {
       return {
@@ -69,13 +76,13 @@ const NewUser = (props) => {
           label="First Name"
           variant="outlined"
           onChange={handleFirstNameChange}
-          //required
+          required
         />
         <TextField
           label="Last Name"
           variant="outlined"
           onChange={handleLastNameChange}
-          //required
+          required
         />
         <TextField
           label="Email"
@@ -89,9 +96,17 @@ const NewUser = (props) => {
           label="DOB"
           variant="outlined"
           type={"date"}
-          maxDate={Date.today}
           //required
           onChange={handleDOBChange}
+        />
+        <TextField
+          InputLabelProps={{ shrink: true }}
+          label="Phone Number"
+          variant="outlined"
+          type={"tel"}
+          pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+          //required
+          onChange={handlePhoneNumberChange}
         />
         <TextField
           onChange={handleGenderChange}

@@ -3,14 +3,23 @@ import Card from "./Card";
 import "./Users.css";
 
 const Users = (props) => {
-  const users = props.users;
-  console.log("from users.js");
-  console.log(users);
+  //const [users, setUsers] = useState(props.users);
+  var users = props.users;
+  const deleteUserHandler = (id) => {
+    props.deleteHandler(id);
+  };
+
   return (
     <Card className="users">
       <ul className="users-list">
         {users.map((user) => {
-          return <User userDetails={user} key={user.id} />;
+          return (
+            <User
+              userDetails={user}
+              onDelete={deleteUserHandler}
+              key={user.id}
+            />
+          );
         })}
       </ul>
     </Card>

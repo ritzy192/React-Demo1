@@ -12,6 +12,8 @@ function App() {
       lastName: "Tandon",
       gender: "Female",
       dob: "1996/11/17",
+      phoneNumber: 123456789,
+      email: "vatsalatandon@gmail.com",
     },
     {
       id: 2,
@@ -20,6 +22,8 @@ function App() {
       lastName: "Datta",
       gender: "Male",
       dob: "1996/09/30",
+      phoneNumber: 234567890,
+      email: "ritzy192@gmail.com",
     },
   ]);
 
@@ -37,10 +41,18 @@ function App() {
     console.log(userData);
     setUserList([...users, userData]);
   };
+
+  const handleDelete = (id) => {
+    setUserList(
+      users.filter((user) => {
+        return user.id !== id;
+      })
+    );
+  };
   return (
     <div className="App">
       <NewUser getUser={getNewUser} />
-      <Users users={users} />
+      <Users users={users} deleteHandler={handleDelete} />
     </div>
   );
 }

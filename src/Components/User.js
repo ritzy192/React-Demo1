@@ -1,8 +1,8 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
+import MaleIcon from "@mui/icons-material/Male";
+import FemaleIcon from "@mui/icons-material/Female";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import "./User.css";
+import Card from "./Card";
 
 const User = (props) => {
   const calculate_age = (dob1) => {
@@ -16,27 +16,35 @@ const User = (props) => {
     console.log(age_now);
     return age_now;
   };
+  const handleDelete = () => {
+    props.onDelete(userData.id);
+  };
   const userData = {
+    id: props.userDetails.id,
     name: props.userDetails.name,
     firstName: props.userDetails.firstName,
     lastName: props.userDetails.lastName,
-    dob: calculate_age(props.userDetails.dob),
+    age: calculate_age(props.userDetails.dob),
+    dob: props.userDetails.dob,
     gender: props.userDetails.gender,
+    phoneNumber: props.userDetails.phoneNumber,
+    email: props.userDetails.email,
   };
+
   return (
-    <Card className="expense-item">
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {userData.name}
-        </Typography>
-        <Typography variant="h5" component="div">
-          {userData.dob}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {userData.gender}
-        </Typography>
-      </CardContent>
-      <Divider light />
+    <Card className="user-item">
+      <div className="user-item__description">
+        <div>{userData.gender === "Male" ? <MaleIcon /> : <FemaleIcon />}</div>
+        <div>{userData.name}</div>
+        <div>
+          <h2>{userData.age}</h2>
+        </div>
+        <div>{userData.email}</div>
+        <div>{userData.phoneNumber}</div>
+        <div>
+          <DeleteForeverRoundedIcon onClick={handleDelete} />
+        </div>
+      </div>
     </Card>
   );
 };
